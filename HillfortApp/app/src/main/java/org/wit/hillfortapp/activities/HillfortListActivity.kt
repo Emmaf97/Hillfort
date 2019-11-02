@@ -54,7 +54,7 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
     }
 
     override fun onHillfortClick(hillfort: HillfortModel) {
-        startActivityForResult(intentFor<HillfortActivity>().putExtra("Hillfort_edit", hillfort), 0)
+        startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort), 0)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

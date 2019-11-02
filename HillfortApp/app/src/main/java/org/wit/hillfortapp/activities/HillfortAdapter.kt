@@ -4,13 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-//import //kotlinx.android.synthetic.main.activity_hillfort.view.*
 import kotlinx.android.synthetic.main.card_hillfort.view.*
-//import kotlinx.android.synthetic.main.card_hillfort.view.description
 import org.wit.hillfortapp.models.HillfortModel
 import org.wit.hillfortapp.R
 import org.wit.hillfortapp.helpers.readImageFromPath
-//import org.wit.hillfortapp.models.HillfortModelModel
 
 interface HillfortListener {
     fun onHillfortClick(hillfort: HillfortModel)

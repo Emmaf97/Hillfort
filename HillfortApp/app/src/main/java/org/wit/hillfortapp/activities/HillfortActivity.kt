@@ -17,13 +17,10 @@ import org.wit.hillfortapp.helpers.readImageFromPath
 import org.wit.hillfortapp.helpers.showImagePicker
 import org.wit.hillfortapp.models.HillfortModel
 import org.wit.hillfortapp.models.Location
-import org.wit.hillfortapp.activities.MapsActivity
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     var hillfort = HillfortModel()
-    //var placemarkvalues = PlacemarkJSONStore()
-    //var placemarkvalues = PlacemarkMemStore()
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
