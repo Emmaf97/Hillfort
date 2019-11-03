@@ -1,6 +1,7 @@
 package org.wit.hillfortapp.models
 
 import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -11,6 +12,8 @@ import java.util.*
 val JSON_FILE = "hillforts.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<HillfortModel>>() {}.type
+//private val mAuth: FirebaseAuth? = null
+
 
 fun generateRandomId(): Long {
     return Random().nextLong()

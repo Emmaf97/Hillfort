@@ -6,17 +6,22 @@ import org.jetbrains.anko.info
 import org.wit.hillfortapp.models.HillfortAppJSONStore
 import org.wit.hillfortapp.models.HillfortAppMemStore
 import org.wit.hillfortapp.models.HillfortStore
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+//import sun.jvm.hotspot.utilities.IntArray
 
-class MainApp : Application(), AnkoLogger {
+
+
+class MainApp : Application(), AnkoLogger  {
 
     lateinit var hillforts: HillfortStore
 
-    //val placemarks = PlacemarkMemStore()
 
     override fun onCreate() {
         super.onCreate()
         hillforts = HillfortAppJSONStore(applicationContext)
         info("Hillfort started")
-        //info("Placemark started")
+        //setContentView(R.layout.activity_login)
+
     }
 }

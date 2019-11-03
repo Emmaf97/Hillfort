@@ -10,9 +10,14 @@
     <string name="save_hillfort"> Save Hillfort </string>
     <string name="button_addImage"> Add Image </string>
     <string name="select_hillfort_image">Select hillfort image</string>
-    <string name="change_hillfort_image">Change hillfort image</string>
+    <string name="change_hillfort_image">Change hillfort data</string>
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Map</string>
+    <string name="user_login">Sign in</string>
+    <string name="user_email">Email</string>
+    <string name="user_password">Password</string>
+    <string name="greeting">Hillfortcacher a better Geo tracker</string>
+    <string name="button_login">click here to start</string>
 
 
 </resources>
