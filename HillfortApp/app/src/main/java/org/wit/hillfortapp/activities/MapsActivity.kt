@@ -24,6 +24,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMarkerD
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+        location = intent.extras?.getParcelable<Location>("location")!!
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -32,7 +33,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMarkerD
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-
+        //val wit = LatLng(52.245696, -7.139102)
         val loc = LatLng(location.lat, location.lng)
         val options = MarkerOptions()
             .title("Hillfort")
@@ -56,6 +57,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMarkerD
         location.zoom = map.cameraPosition.zoom
     }
     override fun onMarkerClick(marker: Marker): Boolean {
+
         val loc = LatLng(location.lat, location.lng)
         marker.setSnippet("GPS : " + loc.toString())
         return false
