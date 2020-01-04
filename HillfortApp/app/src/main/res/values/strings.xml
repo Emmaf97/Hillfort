@@ -18,6 +18,7 @@
     <string name="user_password">Password</string>
     <string name="greeting">Hillfortcacher a better Geo tracker</string>
     <string name="button_login">click here to start</string>
+    <string name="title_activity_hillfort_maps">HillfortMapsActivity</string>
 
 
 </resources>
