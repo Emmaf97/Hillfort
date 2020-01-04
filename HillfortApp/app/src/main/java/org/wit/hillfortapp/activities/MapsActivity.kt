@@ -12,7 +12,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-//import kotlinx.android.synthetic.main.activity_maps.*
+import kotlinx.android.synthetic.main.activity_maps.*
 import org.wit.hillfortapp.R
 import org.wit.hillfortapp.models.Location
 
@@ -30,6 +30,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMarkerD
         mapFragment.getMapAsync(this)
     }
 
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+
+        val loc = LatLng(location.lat, location.lng)
+        val options = MarkerOptions()
+            .title("Hillfort")
+            .snippet("GPS : " + loc.toString())
+            .draggable(true)
+            .position(loc)
+        map.addMarker(options)
+        map.setOnMarkerDragListener(this)
+        map.setOnMarkerClickListener(this)
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
+    }
     override fun onMarkerDragStart(marker: Marker) {
     }
 
@@ -45,20 +59,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback,GoogleMap.OnMarkerD
         val loc = LatLng(location.lat, location.lng)
         marker.setSnippet("GPS : " + loc.toString())
         return false
-    }
-    override fun onMapReady(googleMap: GoogleMap) {
-        map = googleMap
-
-        val loc = LatLng(location.lat, location.lng)
-        val options = MarkerOptions()
-            .title("Hillfort")
-            .snippet("GPS : " + loc.toString())
-            .draggable(true)
-            .position(loc)
-        map.addMarker(options)
-        map.setOnMarkerDragListener(this)
-        map.setOnMarkerClickListener(this)
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
     }
     override fun onBackPressed() {
         val resultIntent = Intent()
