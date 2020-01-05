@@ -34,6 +34,10 @@ class HillfortAppJSONStore : HillfortStore, AnkoLogger {
     override fun findAll(): MutableList<HillfortModel> {
         return hillforts
     }
+    override fun findById(id:Long) : HillfortModel? {
+        val foundPlacemark:HillfortModel? = hillforts.find { it.id == id }
+        return foundPlacemark
+    }
 
     override fun create(hillfort: HillfortModel) {
         hillfort.id = generateRandomId()

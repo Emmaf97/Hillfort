@@ -33,10 +33,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activities.MapsActivity"
+            android:name=".views.editlocation.EditLocationView"
             android:label="@string/title_activity_map" />
-        <activity android:name=".activities.HillfortActivity" />
-        <activity android:name=".activities.HillfortListActivity" />
+        <activity android:name=".views.hillfort.HillfortView" />
+        <activity android:name=".views.hillfortlist.HillfortListActivity" />
         <activity android:name=".activities.loginActivity" />
         <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
