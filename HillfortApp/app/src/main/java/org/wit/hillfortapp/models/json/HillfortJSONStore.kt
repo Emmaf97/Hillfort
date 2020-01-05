@@ -12,7 +12,7 @@ import org.wit.hillfortapp.models.HillfortModel
 import org.wit.hillfortapp.models.HillfortStore
 import java.util.*
 
-val JSON_FILE = "Hillforts.json"
+val JSON_FILE = "hillforts.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<HillfortModel>>() {}.type
 
@@ -20,10 +20,10 @@ fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class HillfortJSONStore : HillfortStore, AnkoLogger {
+class hillfortJSONStore : HillfortStore, AnkoLogger {
 
     val context: Context
-    var Hillforts = mutableListOf<HillfortModel>()
+    var hillforts = mutableListOf<HillfortModel>()
 
     constructor (context: Context) {
         this.context = context
@@ -33,39 +33,39 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
     }
 
     override fun findAll(): MutableList<HillfortModel> {
-        return Hillforts
+        return hillforts
     }
 
-    override fun create(Hillfort: HillfortModel) {
-        Hillfort.id = generateRandomId()
-        Hillforts.add(Hillfort)
+    override fun create(hillfort: HillfortModel) {
+        hillfort.id = generateRandomId()
+        hillforts.add(hillfort)
         serialize()
     }
 
-    override fun update(Hillfort: HillfortModel) {
-        val HillfortsList = findAll() as ArrayList<HillfortModel>
-        var foundHillfort: HillfortModel? = HillfortsList.find { p -> p.id == Hillfort.id }
-        if (foundHillfort != null) {
-            foundHillfort.title = Hillfort.title
-            foundHillfort.description = Hillfort.description
-            foundHillfort.image = Hillfort.image
-            foundHillfort.location = Hillfort.location
+    override fun update(hillfort: HillfortModel) {
+        val hillfortsList = findAll() as ArrayList<HillfortModel>
+        var foundhillfort: HillfortModel? = hillfortsList.find { p -> p.id == hillfort.id }
+        if (foundhillfort != null) {
+            foundhillfort.title = hillfort.title
+            foundhillfort.description = hillfort.description
+            foundhillfort.image = hillfort.image
+            foundhillfort.location = hillfort.location
         }
         serialize()
     }
 
-    override fun delete(Hillfort: HillfortModel) {
-        Hillforts.remove(Hillfort)
+    override fun delete(hillfort: HillfortModel) {
+        hillforts.remove(hillfort)
         serialize()
     }
 
     override fun findById(id:Long) : HillfortModel? {
-        val foundHillfort: HillfortModel? = Hillforts.find { it.id == id }
-        return foundHillfort
+        val foundhillfort: HillfortModel? = hillforts.find { it.id == id }
+        return foundhillfort
     }
 
     private fun serialize() {
-        val jsonString = gsonBuilder.toJson(Hillforts,
+        val jsonString = gsonBuilder.toJson(hillforts,
             listType
         )
         write(context, JSON_FILE, jsonString)
@@ -73,10 +73,10 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
 
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
-        Hillforts = Gson().fromJson(jsonString, listType)
+        hillforts = Gson().fromJson(jsonString, listType)
     }
 
     override fun clear() {
-        Hillforts.clear()
+        hillforts.clear()
     }
 }

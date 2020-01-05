@@ -2,13 +2,11 @@ package org.wit.hillfortapp.views.login
 
 import android.os.Bundle
 import android.widget.ProgressBar
-import kotlinx.android.synthetic.main.activity_edit_location.*
-import kotlinx.android.synthetic.main.activity_edit_location.toolbar
 import kotlinx.android.synthetic.main.activity_login.*
-
 import org.jetbrains.anko.toast
-import org.wit.hillfortapp.R
+import org.wit.hillfortapp.views.login.LoginPresenter
 
+import org.wit.hillfortapp.R
 import org.wit.hillfortapp.views.views.BaseView
 
 class LoginView : BaseView() {

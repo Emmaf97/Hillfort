@@ -1,22 +1,19 @@
 package org.wit.hillfortapp.views.map
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
-import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import kotlinx.android.synthetic.main.activity_hillfort_maps.*
 import kotlinx.android.synthetic.main.content_hillfort_maps.*
-
+import org.wit.hillfort.views.map.hillfortMapPresenter
 import org.wit.hillfortapp.R
-import org.wit.hillfortapp.helpers.readImageFromPath
 import org.wit.hillfortapp.models.HillfortModel
-import org.wit.hillfortapp.views.BasePresenter
 import org.wit.hillfortapp.views.views.BaseView
-
 
 class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
 
-    lateinit var presenter: HillfortMapPresenter
+    lateinit var presenter: hillfortMapPresenter
     lateinit var map : GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,23 +21,23 @@ class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
         setContentView(R.layout.activity_hillfort_maps)
         super.init(toolbar, true)
 
-        presenter = initPresenter (BasePresenter(this)) as HillfortMapPresenter
+        presenter = initPresenter (hillfortMapPresenter(this)) as hillfortMapPresenter
 
-        mapView.onCreate(savedInstanceState)
+        mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
             map = it
             map.setOnMarkerClickListener(this)
-            presenter.loadHillforts()
+            presenter.loadhillforts()
         }
     }
 
-    override fun showHillfort(hillfort: HillfortModel) {
+    override fun showhillfort(hillfort: HillfortModel) {
         currentTitle.text = hillfort.title
         currentDescription.text = hillfort.description
-        currentImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+        Glide.with(this).load(hillfort.image).into(currentImage);
     }
 
-    override fun showHillforts(hillforts: List<HillfortModel>) {
+    override fun showhillforts(hillforts: List<HillfortModel>) {
         presenter.doPopulateMap(map, hillforts)
     }
 

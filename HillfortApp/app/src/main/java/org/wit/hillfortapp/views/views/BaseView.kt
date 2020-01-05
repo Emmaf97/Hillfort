@@ -7,14 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.AnkoLogger
+import org.wit.hillfortapp.views.editlocation.EditLocationView
 import org.wit.hillfortapp.models.HillfortModel
 import org.wit.hillfortapp.models.Location
 import org.wit.hillfortapp.views.BasePresenter
-import org.wit.hillfortapp.views.editlocation.EditLocationView
 import org.wit.hillfortapp.views.hillfort.HillfortView
 import org.wit.hillfortapp.views.hillfortlist.HillfortListView
 import org.wit.hillfortapp.views.login.LoginView
 import org.wit.hillfortapp.views.map.HillfortMapView
+
 
 val IMAGE_REQUEST = 1
 val LOCATION_REQUEST = 2
@@ -23,7 +24,7 @@ enum class VIEW {
     LOCATION, HILLFORT, MAPS, LIST, LOGIN
 }
 
- abstract class BaseView : AppCompatActivity(), AnkoLogger {
+open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
 
     var basePresenter: BasePresenter? = null
 
@@ -74,8 +75,8 @@ enum class VIEW {
         basePresenter?.doRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    open fun showHillfort(Hillfort: HillfortModel) {}
-    open fun showHillforts(Hillforts: List<HillfortModel>) {}
+    open fun showhillfort(hillfort: HillfortModel) {}
+    open fun showhillforts(hillforts: List<HillfortModel>) {}
     open fun showLocation(location : Location) {}
     open fun showProgress() {}
     open fun hideProgress() {}

@@ -3,14 +3,18 @@ package org.wit.hillfortapp.views.editlocation
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_edit_location.*
-
+import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import kotlinx.android.synthetic.main.activity_hillfort_list.toolbar
+import kotlinx.android.synthetic.main.content_hillfort_maps.*
+import kotlinx.android.synthetic.main.content_hillfort_maps.mapView
 import org.wit.hillfortapp.R
-import org.wit.hillfortapp.views.BasePresenter
+import org.wit.hillfortapp.views.editlocation.EditLocationPresenter
 import org.wit.hillfortapp.views.views.BaseView
+
 
 class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
@@ -21,9 +25,9 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
         setContentView(R.layout.activity_edit_location)
         super.init(toolbar, true)
 
-        presenter = initPresenter(BasePresenter(this)) as EditLocationPresenter
+        presenter = initPresenter(EditLocationPresenter(this)) as EditLocationPresenter
 
-        mapView.onCreate(savedInstanceState)
+        mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
             it.setOnMarkerDragListener(this)
             it.setOnMarkerClickListener(this)
@@ -48,8 +52,8 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
     override fun onMarkerDragStart(marker: Marker) {}
 
     override fun onMarkerDrag(marker: Marker) {
-        lat.text = "%.6f".format(marker.position.latitude)
-        lng.text = "%.6f".format(marker.position.longitude)
+        lat.setText("%.6f".format(marker.position.latitude))
+        lng.setText("%.6f".format(marker.position.longitude))
     }
 
     override fun onMarkerDragEnd(marker: Marker) {

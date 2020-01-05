@@ -1,5 +1,4 @@
-package org.wit.hillfortapp.views.map
-
+package org.wit.hillfort.views.map
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -8,17 +7,15 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-
 import org.wit.hillfortapp.models.HillfortModel
 import org.wit.hillfortapp.views.BasePresenter
 import org.wit.hillfortapp.views.views.BaseView
 
-class HillfortMapPresenter(view: BaseView) : BasePresenter(view) {
+class hillfortMapPresenter(view: BaseView) : BasePresenter(view) {
 
-
-    fun doPopulateMap(map: GoogleMap, Hillforts: List<HillfortModel>) {
-        map.uiSettings.isZoomControlsEnabled = true
-        Hillforts.forEach {
+    fun doPopulateMap(map: GoogleMap, hillforts: List<HillfortModel>) {
+        map.uiSettings.setZoomControlsEnabled(true)
+        hillforts.forEach {
             val loc = LatLng(it.location.lat, it.location.lng)
             val options = MarkerOptions().title(it.title).position(loc)
             map.addMarker(options).tag = it
@@ -29,18 +26,18 @@ class HillfortMapPresenter(view: BaseView) : BasePresenter(view) {
     fun doMarkerSelected(marker: Marker) {
         val tag = marker.tag as Long
         doAsync {
-            val Hillfort = marker.tag as HillfortModel
+            val hillfort = marker.tag as HillfortModel
             uiThread {
-                if (Hillfort != null) view?.showHillfort(Hillfort)
+                if (hillfort != null) view?.showhillfort(hillfort)
             }
         }
     }
 
-    fun loadHillforts() {
+    fun loadhillforts() {
         doAsync {
-            val Hillforts = app.Hillforts.findAll()
+            val hillforts = app.hillforts.findAll()
             uiThread {
-                view?.showHillforts(Hillforts)
+                view?.showhillforts(hillforts)
             }
         }
     }

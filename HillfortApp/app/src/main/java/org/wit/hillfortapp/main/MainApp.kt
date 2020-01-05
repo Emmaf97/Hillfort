@@ -6,13 +6,14 @@ import org.jetbrains.anko.info
 import org.wit.hillfortapp.models.HillfortStore
 import org.wit.hillfortapp.models.firebase.HillfortFireStore
 
+
 class MainApp : Application(), AnkoLogger {
 
-    lateinit var Hillforts: HillfortStore
+    lateinit var hillforts: HillfortStore
 
     override fun onCreate() {
         super.onCreate()
-        Hillforts = HillfortFireStore(applicationContext)
-        info("Hillfort started")
+        hillforts = HillfortFireStore(applicationContext)
+        info("hillfort started")
     }
 }

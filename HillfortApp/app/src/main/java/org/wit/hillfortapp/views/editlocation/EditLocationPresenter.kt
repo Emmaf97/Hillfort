@@ -21,7 +21,7 @@ class EditLocationPresenter(view: BaseView) : BasePresenter(view) {
     fun doConfigureMap(map: GoogleMap) {
         val loc = LatLng(location.lat, location.lng)
         val options = MarkerOptions()
-            .title("Hillfort")
+            .title("hillfort")
             .snippet("GPS : " + loc.toString())
             .draggable(true)
             .position(loc)
@@ -43,6 +43,6 @@ class EditLocationPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doUpdateMarker(marker: Marker) {
         val loc = LatLng(location.lat, location.lng)
-        marker.snippet = "GPS : " + loc.toString()
+        marker.setSnippet("GPS : " + loc.toString())
     }
 }

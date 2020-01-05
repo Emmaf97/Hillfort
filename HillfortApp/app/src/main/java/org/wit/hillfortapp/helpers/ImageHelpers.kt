@@ -36,8 +36,8 @@ fun readImageFromPath(context: Context, path: String): Bitmap? {
     val uri = Uri.parse(path)
     if (uri != null) {
         try {
-            val parcelFileDescriptor = context.contentResolver.openFileDescriptor(uri, "r")
-            val fileDescriptor = parcelFileDescriptor?.fileDescriptor
+            val parcelFileDescriptor = context.getContentResolver().openFileDescriptor(uri, "r")
+            val fileDescriptor = parcelFileDescriptor?.getFileDescriptor()
             bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
             parcelFileDescriptor?.close()
         } catch (e: Exception) {

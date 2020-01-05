@@ -35,7 +35,7 @@ class HillfortView : BaseView(), AnkoLogger {
         chooseImage.setOnClickListener { presenter.doSelectImage() }
     }
 
-    override fun showHillfort(Hillfort: HillfortModel) {
+    override fun showhillfort(Hillfort: HillfortModel) {
         HillfortTitle.setText(Hillfort.title)
         description.setText(Hillfort.description)
         Glide.with(this).load(Hillfort.image).into(HillfortImage)

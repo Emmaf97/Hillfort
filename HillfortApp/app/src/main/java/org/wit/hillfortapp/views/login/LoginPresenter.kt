@@ -13,8 +13,8 @@ class LoginPresenter(view: BaseView) : BasePresenter(view) {
     var fireStore: HillfortFireStore? = null
 
     init {
-        if (app.Hillforts is HillfortFireStore) {
-            fireStore = app.Hillforts as HillfortFireStore
+        if (app.hillforts is HillfortFireStore) {
+            fireStore = app.hillforts as HillfortFireStore
         }
     }
 

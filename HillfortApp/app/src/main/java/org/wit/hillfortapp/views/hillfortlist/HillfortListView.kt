@@ -28,7 +28,7 @@ class HillfortListView :  BaseView(), HillfortListener {
         presenter.loadHillforts()
     }
 
-    override fun showHillforts(hillforts: List<HillfortModel>) {
+    override fun showhillforts(hillforts: List<HillfortModel>) {
         recyclerView.adapter = HillfortAdapter(hillforts, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }

@@ -16,6 +16,7 @@ import org.wit.hillfortapp.helpers.checkLocationPermissions
 import org.wit.hillfortapp.helpers.createDefaultLocationRequest
 import org.wit.hillfortapp.helpers.isPermissionGranted
 import org.wit.hillfortapp.helpers.showImagePicker
+
 import org.wit.hillfortapp.models.HillfortModel
 import org.wit.hillfortapp.models.Location
 import org.wit.hillfortapp.views.*
@@ -37,7 +38,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
         if (view.intent.hasExtra("Hillfort_edit")) {
             edit = true
             Hillfort = view.intent.extras?.getParcelable<HillfortModel>("Hillfort_edit")!!
-            view.showHillfort(Hillfort)
+            view.showhillfort(Hillfort)
         } else {
             if (checkLocationPermissions(view)) {
                 doSetCurrentLocation()
@@ -97,9 +98,9 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
         Hillfort.description = description
         doAsync {
             if (edit) {
-                app.Hillforts.update(Hillfort)
+                app.hillforts.update(Hillfort)
             } else {
-                app.Hillforts.create(Hillfort)
+                app.hillforts.create(Hillfort)
             }
             uiThread {
                 view?.finish()
@@ -113,7 +114,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doDelete() {
         doAsync {
-            app.Hillforts.delete(Hillfort)
+            app.hillforts.delete(Hillfort)
             uiThread {
                 view?.finish()
             }
@@ -134,7 +135,7 @@ class HillfortPresenter(view: BaseView) : BasePresenter(view) {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 Hillfort.image = data.data.toString()
-                view?.showHillfort(Hillfort)
+                view?.showhillfort(Hillfort)
             }
             LOCATION_REQUEST -> {
                 val location = data.extras?.getParcelable<Location>("location")!!
