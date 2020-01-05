@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 import org.wit.hillfortapp.R
-import org.wit.hillfortapp.views.hillfortlist.HillfortListActivity
+import org.wit.hillfortapp.views.hillfortlist.HillfortListView
 
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -28,7 +28,7 @@ class SplashScreenActivity : AppCompatActivity() {
 //    }
 //}
         btnstart.setOnClickListener {
-            val intent = Intent(this, HillfortListActivity::class.java)
+            val intent = Intent(this, HillfortListView::class.java)
             startActivity(intent)
         }
     }

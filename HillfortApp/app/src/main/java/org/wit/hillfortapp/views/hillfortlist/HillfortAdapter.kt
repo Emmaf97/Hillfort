@@ -19,9 +19,11 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
-            LayoutInflater.from(
-                parent?.context
-            ).inflate(R.layout.card_hillfort, parent, false)
+            LayoutInflater.from(parent?.context).inflate(
+                R.layout.card_hillfort,
+                parent,
+                false
+            )
         )
     }
 
@@ -35,7 +37,7 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(hillfort: HillfortModel, listener: HillfortListener) {
-            itemView.hillfortTitle.text = hillfort.title
+            itemView.hillforttitle.text = hillfort.title
             itemView.description.text = hillfort.description
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
             itemView.setOnClickListener { listener.onHillfortClick(hillfort) }

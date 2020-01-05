@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activities.HillfortMapsActivity"
+    tools:context=".views.map.HillfortMapView"
     tools:showIn="@layout/activity_hillfort_maps">
 
     <com.google.android.gms.maps.MapView
@@ -20,6 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="356dp"
@@ -41,18 +42,17 @@
                 android:layout_width="121dp"
                 android:layout_height="98dp"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="@string/change_hillfort_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_launcher_background" />
-
+                tools:srcCompat="@tools:sample/backgrounds/scenic"
+                android:contentDescription="@string/select_hillfort_image" />
 
             <TextView
                 android:id="@+id/currentTitle"
                 android:layout_width="175dp"
                 android:layout_height="21dp"
-                android:text="@string/hint_hillfortTitle"
+                android:text="@string/enter_hillfort_title"
                 app:layout_constraintBottom_toTopOf="@+id/currentDescription"
                 app:layout_constraintEnd_toStartOf="@+id/currentImage"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,16 +70,7 @@
                 app:layout_constraintHorizontal_bias="0.521"
                 app:layout_constraintStart_toStartOf="parent" />
 
-
-            <!--            <ImageView-->
-            <!--                android:id="@+id/imageView2"-->
-            <!--                android:layout_width="121dp"-->
-            <!--                android:layout_height="98dp"-->
-            <!--                android:layout_marginEnd="8dp"-->
-            <!--                app:layout_constraintEnd_toStartOf="@+id/currentImage"-->
-            <!--                app:srcCompat="@drawable/ic_launcher_background"-->
-            <!--                tools:layout_editor_absoluteY="6dp" />-->
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

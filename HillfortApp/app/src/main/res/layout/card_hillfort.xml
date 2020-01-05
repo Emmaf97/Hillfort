@@ -21,7 +21,7 @@
             android:contentDescription="@string/change_hillfort_image" />
 
         <TextView
-            android:id="@+id/hillfortTitle"
+            android:id="@+id/hillforttitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -31,7 +31,7 @@
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/hillfortTitle" />
+            android:layout_below="@id/hillforttitle" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
