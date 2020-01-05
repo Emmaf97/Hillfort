@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import org.wit.hillfortapp.R
 import org.wit.hillfortapp.models.HillfortModel
-import org.wit.hillfortapp.views.base.BaseView
+import org.wit.hillfortapp.views.BasePresenter
+
+import org.wit.hillfortapp.views.views.BaseView
+
 
 class HillfortListView :  BaseView(), HillfortListener {
 
@@ -18,7 +21,7 @@ class HillfortListView :  BaseView(), HillfortListener {
         setContentView(R.layout.activity_hillfort_list)
         setSupportActionBar(toolbar)
 
-        presenter = initPresenter(HillfortListPresenter(this)) as HillfortListPresenter
+        presenter = initPresenter(BasePresenter(this)) as HillfortListPresenter
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager

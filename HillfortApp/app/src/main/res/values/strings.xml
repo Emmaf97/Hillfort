@@ -1,25 +1,27 @@
 <resources>
     <string name="app_name">Hillfort</string>
+    <string name="hint_HillfortTitle">Hillfort Title</string>
+    <string name="hint_HillfortDescription">Description </string>
     <string name="button_addHillfort">Add Hillfort</string>
-    <string name="hint_hillfortTitle">Hillfort Title</string>
-    <string name="hint_hillfortDescription">Description </string>
     <string name="menu_addHillfort">Add</string>
     <string name="menu_cancelHillfort">Cancel</string>
-    <string name="menu_deleteHillfort">Delete</string>
-    <string name="enter_hillfort_title"> Please enter a Hillfort Title </string>
-    <string name="save_hillfort"> Save Hillfort </string>
+    <string name="enter_Hillfort_title"> Please enter a Hillfort Title </string>
+    <string name="save_Hillfort"> Save Hillfort </string>
     <string name="button_addImage"> Add Image </string>
-    <string name="select_hillfort_image">Select hillfort image</string>
-    <string name="change_hillfort_image">Add Hillfort Image</string>
+    <string name="select_Hillfort_image">Select Hillfort image</string>
+    <string name="change_Hillfort_image">Change Hillfort image</string>
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Map</string>
-    <string name="user_login">Sign in</string>
-    <string name="user_email">Email</string>
-    <string name="user_password">Password</string>
-    <string name="greeting">Hillfortcacher a better Geo tracker</string>
-    <string name="button_login">click here to start</string>
-    <string name="title_activity_hillfort_maps">Map of All Hillforts</string>
+    <string name="menu_deleteHillfort">Delete</string>
+    <string name="title_activity_Hillfort_maps">Map of All Hillforts </string>
+    <string name="Hillfort_image_placeholder">Hillfort Imagee</string>
+    <string name="Hillfort_title_placeholder">Hillfort Title</string>
+    <string name="Hillfort_description_placeholder">Hillfort Description</string>
     <string name="menu_saveHillfort">Save</string>
-
-
+    <string name="title_activity_Hillfort_list">Hillforts</string>
+    <string name="title_activity_Hillfort">Hillfort</string>
+    <string name="title_activity_edit_location">Hillfort</string>
+    <string name="title_activity_login"> Signup/Login to Hillfort</string>
+    <string name="menu_showMap">Show Map</string>
+    <string name="menu_logout">Logout</string>
 </resources>

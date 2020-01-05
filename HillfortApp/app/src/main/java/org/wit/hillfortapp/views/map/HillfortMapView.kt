@@ -6,31 +6,42 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import kotlinx.android.synthetic.main.content_hillfort_maps.*
+
 import org.wit.hillfortapp.R
 import org.wit.hillfortapp.helpers.readImageFromPath
 import org.wit.hillfortapp.models.HillfortModel
+import org.wit.hillfortapp.views.BasePresenter
+import org.wit.hillfortapp.views.views.BaseView
 
 
-class HillfortMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+class HillfortMapView : BaseView(), GoogleMap.OnMarkerClickListener {
 
     lateinit var presenter: HillfortMapPresenter
+    lateinit var map : GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort_maps)
-        setSupportActionBar(toolbar)
-        presenter = HillfortMapPresenter(this)
+        super.init(toolbar, true)
 
-        mapView.onCreate(savedInstanceState);
+        presenter = initPresenter (BasePresenter(this)) as HillfortMapPresenter
+
+        mapView.onCreate(savedInstanceState)
         mapView.getMapAsync {
-            presenter.doPopulateMap(it)
+            map = it
+            map.setOnMarkerClickListener(this)
+            presenter.loadHillforts()
         }
     }
 
-    fun showPlacemark(placemark: HillfortModel) {
-        currentTitle.text = placemark.title
-        currentDescription.text = placemark.description
-        currentImage.setImageBitmap(readImageFromPath(this, placemark.image))
+    override fun showHillfort(hillfort: HillfortModel) {
+        currentTitle.text = hillfort.title
+        currentDescription.text = hillfort.description
+        currentImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+    }
+
+    override fun showHillforts(hillforts: List<HillfortModel>) {
+        presenter.doPopulateMap(map, hillforts)
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {

@@ -1,9 +1,12 @@
 package org.wit.hillfortapp.views.hillfortlist
 
+
+
 import org.wit.hillfortapp.models.HillfortModel
-import org.wit.hillfortapp.views.base.BasePresenter
-import org.wit.hillfortapp.views.base.BaseView
-import org.wit.hillfortapp.views.base.VIEW
+import org.wit.hillfortapp.views.BasePresenter
+import org.wit.hillfortapp.views.views.BaseView
+import org.wit.hillfortapp.views.views.VIEW
+
 
 class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -20,6 +23,6 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun loadHillforts() {
-        view?.showHillforts(app.hillforts.findAll())
+        view?.showHillforts(app.Hillforts.findAll())
     }
 }

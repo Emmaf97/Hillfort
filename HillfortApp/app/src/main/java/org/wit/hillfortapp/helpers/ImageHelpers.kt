@@ -15,9 +15,10 @@ fun showImagePicker(parent: Activity, id: Int) {
     intent.type = "image/*"
     intent.action = Intent.ACTION_OPEN_DOCUMENT
     intent.addCategory(Intent.CATEGORY_OPENABLE)
-    val chooser = Intent.createChooser(intent, R.string.select_hillfort_image.toString())
+    val chooser = Intent.createChooser(intent, R.string.select_Hillfort_image.toString())
     parent.startActivityForResult(chooser, id)
 }
+
 fun readImage(activity: Activity, resultCode: Int, data: Intent?): Bitmap? {
     var bitmap: Bitmap? = null
     if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {
@@ -29,13 +30,14 @@ fun readImage(activity: Activity, resultCode: Int, data: Intent?): Bitmap? {
     }
     return bitmap
 }
-fun readImageFromPath(context: Context, path : String) : Bitmap? {
-    var bitmap : Bitmap? = null
+
+fun readImageFromPath(context: Context, path: String): Bitmap? {
+    var bitmap: Bitmap? = null
     val uri = Uri.parse(path)
     if (uri != null) {
         try {
-            val parcelFileDescriptor = context.getContentResolver().openFileDescriptor(uri, "r")
-            val fileDescriptor = parcelFileDescriptor?.getFileDescriptor()
+            val parcelFileDescriptor = context.contentResolver.openFileDescriptor(uri, "r")
+            val fileDescriptor = parcelFileDescriptor?.fileDescriptor
             bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
             parcelFileDescriptor?.close()
         } catch (e: Exception) {

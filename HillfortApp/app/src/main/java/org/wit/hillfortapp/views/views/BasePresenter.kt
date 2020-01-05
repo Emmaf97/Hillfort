@@ -1,7 +1,8 @@
-package org.wit.hillfortapp.views.base
+package org.wit.hillfortapp.views
 
 import android.content.Intent
-import org.wit.hillfortapp.MainApp
+import org.wit.hillfortapp.main.MainApp
+import org.wit.hillfortapp.views.views.BaseView
 
 open class BasePresenter(var view: BaseView?) {
 

@@ -6,30 +6,42 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import org.wit.hillfortapp.MainApp
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
-class HillfortMapPresenter(val view: HillfortMapView) {
+import org.wit.hillfortapp.models.HillfortModel
+import org.wit.hillfortapp.views.BasePresenter
+import org.wit.hillfortapp.views.views.BaseView
 
-    var app: MainApp
+class HillfortMapPresenter(view: BaseView) : BasePresenter(view) {
 
-    init {
-        app = view.application as MainApp
-    }
 
-    fun doPopulateMap(map: GoogleMap) {
-        map.uiSettings.setZoomControlsEnabled(true)
-        map.setOnMarkerClickListener(view)
-        app.hillforts.findAll().forEach {
-            val loc = LatLng(it.lat, it.lng)
+    fun doPopulateMap(map: GoogleMap, Hillforts: List<HillfortModel>) {
+        map.uiSettings.isZoomControlsEnabled = true
+        Hillforts.forEach {
+            val loc = LatLng(it.location.lat, it.location.lng)
             val options = MarkerOptions().title(it.title).position(loc)
-            map.addMarker(options).tag = it.id
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
+            map.addMarker(options).tag = it
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.location.zoom))
         }
     }
 
     fun doMarkerSelected(marker: Marker) {
         val tag = marker.tag as Long
-        val hillfort = app.hillforts.findById(tag)
-        if (hillfort != null) view.showPlacemark(hillfort)
+        doAsync {
+            val Hillfort = marker.tag as HillfortModel
+            uiThread {
+                if (Hillfort != null) view?.showHillfort(Hillfort)
+            }
+        }
+    }
+
+    fun loadHillforts() {
+        doAsync {
+            val Hillforts = app.Hillforts.findAll()
+            uiThread {
+                view?.showHillforts(Hillforts)
+            }
+        }
     }
 }

@@ -4,22 +4,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.card_hillfort.view.*
-import org.wit.hillfortapp.models.HillfortModel
 import org.wit.hillfortapp.R
-import org.wit.hillfortapp.helpers.readImageFromPath
+import org.wit.hillfortapp.models.HillfortModel
 
 interface HillfortListener {
-    fun onHillfortClick(hillfort: HillfortModel)
+    fun onHillfortClick(Hillfort: HillfortModel)
 }
 
-class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
-                                   private val listener: HillfortListener
+class HillfortAdapter constructor(private var Hillforts: List<HillfortModel>,
+                                  private val listener: HillfortListener
 ) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
-            LayoutInflater.from(parent?.context).inflate(
+            LayoutInflater.from(parent.context).inflate(
                 R.layout.card_hillfort,
                 parent,
                 false
@@ -28,19 +28,19 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortModel>,
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val hillfort = hillforts[holder.adapterPosition]
-        holder.bind(hillfort, listener)
+        val Hillfort = Hillforts[holder.adapterPosition]
+        holder.bind(Hillfort, listener)
     }
 
-    override fun getItemCount(): Int = hillforts.size
+    override fun getItemCount(): Int = Hillforts.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(hillfort: HillfortModel, listener: HillfortListener) {
-            itemView.hillforttitle.text = hillfort.title
-            itemView.description.text = hillfort.description
-            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
-            itemView.setOnClickListener { listener.onHillfortClick(hillfort) }
+        fun bind(Hillfort: HillfortModel, listener: HillfortListener) {
+            itemView.HillfortTitle.text = Hillfort.title
+            itemView.description.text = Hillfort.description
+            Glide.with(itemView.context).load(Hillfort.image).into(itemView.imageIcon)
+            itemView.setOnClickListener { listener.onHillfortClick(Hillfort) }
         }
     }
 }
